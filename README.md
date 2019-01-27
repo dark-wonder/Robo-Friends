@@ -4,6 +4,6 @@ To run this Project:
  - cd into the cloned directory
  - Open your terminal/command Prompt
  - type: 
- npm install (to obtain mode-modules)
- npm start
+ -- npm install (to obtain mode-modules)
+ -- npm start
  - the wesbite will run.
