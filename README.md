@@ -3,5 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 To run this Project:
  - cd into the cloned directory
  - Open your terminal/command Prompt
- - type: npm start
+ - type: 
+ npm install
+ npm start
  - the wesbite will run.
