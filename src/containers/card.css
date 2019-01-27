@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton');
+
+
+.heading{
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Monoton', cursive;
+	font-size: 45px;
+}
+#robo_box {
+	overflow-wrap: break-word;
+	size: 150px;
+}
