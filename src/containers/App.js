@@ -3,7 +3,7 @@ import './App.css'
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
-
+import ErrorBoundary from '../components/ErrorBoundary'
 
 class App extends Component {
 	constructor() {
@@ -12,14 +12,12 @@ class App extends Component {
 			robots: [],
 			searchfield:''
 		}
-		console.log('constructor');
 	}
 
 	componentDidMount() {
 		fetch('https://jsonplaceholder.typicode.com/users')
 		.then(response => response.json())
 		.then(users => this.setState({robots: users}));
-		console.log('componentDidMount');
 	}
 
 	onSearchChange= (event) => {
@@ -28,29 +26,25 @@ class App extends Component {
 	}
 
 	render() {
-		const filterrobots=this.state.robots.filter(robots =>{
-		return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+		const { robots, searchfield } = this.state;
+		const filterrobots = robots.filter(robot =>{
+		return robot.name.toLowerCase().includes(searchfield.toLowerCase());
 		})
-		console.log(filterrobots);
-		console.log('render');
 
-		if(this.state.robots.length===0) {
-			return <h1 id='heading' className='tc pa7'>Loading...</h1>
-		} 
-		else {
-			return (
-				<div className='tc'>
-					<h1 id='heading'>ROBOFRIENDS</h1>
+		return !robots.length ?
+		 <h1 id='heading' className='tc pa7'>Loading...</h1>
+		:(
+				<div className='tc vh-100'>
+					<h1 id='heading' className='f2 f1-m f-subheadline-l ma0 pt3 pt4-m pt5-l'>ROBOFRIENDS</h1>
 					<SearchBox searchChange={this.onSearchChange}/>
 					<Scroll>
-						<CardList robots={filterrobots}/>
+						<ErrorBoundary>
+							<CardList robots={filterrobots}/>
+						</ErrorBoundary>
 					</Scroll>
 				</div>
 			);
-		}
-		
 	}
-	
 }
 
 export default App;
