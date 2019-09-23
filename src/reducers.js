@@ -9,7 +9,6 @@ const initialState = { //initialState is an object
 //actions are objects that we are returning
 //searchRobots should be a pure function that returns an output that is a new state without modifications
 export const searchRobots = (state = initialState, action = {}) => {
-	console.log(action.type);
 	switch(action.type){ //we use type in actions.js file
 		case CHANGE_SEARCH_FIELD:
 			return Object.assign({}, state, {searchField: action.payload});
